@@ -1,3 +1,4 @@
+#CLient Side code
 import requests
 from urllib.parse import urlparse
 import os
@@ -17,7 +18,7 @@ LIST_IMAGES_URL = f'{BASE_URL}/list_images'
 RETRIEVE_IMAGE_URL = f'{BASE_URL}/retrieve_image'
 
 # Upload the list of image URLs
-image_links = ["http://pngimg.com/uploads/butterfly/butterfly_PNG1037.png","http://pngimg.com/uploads/plum/plum_PNG8662.png"]
+image_links = ["http://pngimg.com/uploads/plum/plum_PNG8662.png", "http://images2.fanpop.com/images/photos/6000000/Random-random-6064744-1280-800.jpg"]
 
 # 1. Operation 1: Upload images
 payload = {'image_links': image_links}
@@ -27,8 +28,8 @@ if response.status_code == 200:
     stored_images = response.json().get('stored_images')
     print("Uploaded images successfully.....")
     print("Downloaded Images are:\n", stored_images)
-    
-    
+
+
 else:
     print("Failed to upload images")
     print(response.json()) 
@@ -56,8 +57,6 @@ if image_name in available_images:
 
     # Check if retrieving the image was successful
     if response.status_code == 200:
-        #with open('retrieved_image.jpg', 'wb') as f:
-            #f.write(response.content)
         print("\nRetrieved image successfully......")
         print("Link to retrieve the image:", RETRIEVE_IMAGE_URL + f"?image_url={image_url}")
     else:

@@ -1,3 +1,4 @@
+#Server side code
 from flask import Flask, jsonify, send_file, request
 import os
 import requests
@@ -36,6 +37,7 @@ def upload_images():
 #Endpoint logic for showing the available images
 @app.route('/list_images', methods=['GET'])
 def list_images():
+
     stored_images = []
     if os.path.exists(IMAGE_STORAGE_PATH):
         stored_images = [filename for filename in os.listdir(IMAGE_STORAGE_PATH)]
